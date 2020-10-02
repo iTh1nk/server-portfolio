@@ -22,8 +22,8 @@ class GetAll(APIView):
 class GetAny(APIView):
     permission_classes = (AllowAny,)
 
-    def get(self, request, pk):
-        post = models.Post.objects.get(id=pk)
+    def get(self, request, post_id):
+        post = models.Post.objects.get(id=post_id)
         serializer = serializers.PostSerializer(post)
         return Response(serializer.data)
 
@@ -63,8 +63,8 @@ class PostAll(APIView):
 class PutAny(APIView):
     permission_classes = (IsAdminUser,)
 
-    def put(self, request, pk):
-        post = models.Post.objects.get(id=pk)
+    def put(self, request, post_id):
+        post = models.Post.objects.get(id=post_id)
         serializer = serializers.PostSerializer(post, request.data)
         if serializer.is_valid():
             serializer.save()
@@ -75,7 +75,7 @@ class PutAny(APIView):
 class DeleteAny(APIView):
     permission_classes = (IsAdminUser,)
 
-    def delete(self, _, pk):
-        post = models.Post.objects.get(id=pk)
+    def delete(self, _, post_id):
+        post = models.Post.objects.get(id=post_id)
         post.delete()
         return Response({'success': 'Deleted Successfully!'}, status=status.HTTP_204_NO_CONTENT)
