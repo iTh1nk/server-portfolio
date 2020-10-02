@@ -133,3 +133,5 @@ dmypy.json
 /venv/
 .env
 db.sqlite3
+
+settings.py
