@@ -29,7 +29,7 @@ class GetAny(APIView):
 
 
 class GetPage(GenericAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     pagination_class = CustomPagination
 
     def get(self, request):
@@ -52,7 +52,6 @@ class PostAll(APIView):
     permission_classes = (IsAdminUser,)
 
     def post(self, request):
-        print(request.data)
         serializer = serializers.PostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

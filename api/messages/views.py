@@ -51,8 +51,7 @@ class GetPage(GenericAPIView):
 class PostAll(APIView):
     permission_classes = (IsAdminUser,)
 
-    def message(self, request):
-        print(request.data)
+    def post(self, request):
         serializer = serializers.MessageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
