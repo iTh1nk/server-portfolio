@@ -49,7 +49,7 @@ class GetPage(GenericAPIView):
 
 
 class PostAll(APIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
 
     def post(self, request):
         serializer = serializers.MessageSerializer(data=request.data)
