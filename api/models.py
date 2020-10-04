@@ -90,7 +90,8 @@ class Project(models.Model):
 class Message(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255, unique=False)
-    content = models.CharField(max_length=255, unique=False)
+    author = models.CharField(max_length=255, unique=False, default="")
+    content = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
