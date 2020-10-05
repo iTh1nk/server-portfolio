@@ -46,7 +46,7 @@ class DeleteAny(APIView):
 
     def delete(self, _, intro_id):
         intro = models.Intro.objects.get(id=intro_id)
-        if intro.is_valid():
-            intro.delete()
-            return Response({'success': 'Deleted Successfully!'}, status=status.HTTP_204_NO_CONTENT)
+        # if intro.is_valid():
+        #     intro.delete()
+        #     return Response({'success': 'Deleted Successfully!'}, status=status.HTTP_204_NO_CONTENT)
         return Response({'error': 'Something went wrong!'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
