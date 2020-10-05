@@ -45,6 +45,6 @@ class DeleteAny(APIView):
     permission_classes = (IsAdminUser,)
 
     def delete(self, _, intro_id):
-        intro = models.Intro.objects.get(id=intro_id)
+        intro = models.Post.objects.get(id=intro_id)
         intro.delete()
         return Response({'success': 'Deleted Successfully!'}, status=status.HTTP_204_NO_CONTENT)
