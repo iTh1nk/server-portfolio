@@ -29,7 +29,7 @@ class GetAny(APIView):
 
 
 class GetPage(GenericAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAdminUser,)
     pagination_class = CustomPagination
 
     def get(self, request):
@@ -55,7 +55,7 @@ class PostAll(APIView):
         serializer = serializers.MessageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'success': 'Message Successfully!', 'data': serializer.data}, status=status.HTTP_201_CREATED)
+            return Response({'success': 'Post Successfully!', 'data': serializer.data}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

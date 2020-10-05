@@ -55,7 +55,7 @@ class PostAll(APIView):
         serializer = serializers.ProjectSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'success': 'Project Successfully!', 'data': serializer.data}, status=status.HTTP_201_CREATED)
+            return Response({'success': 'Post Successfully!', 'data': serializer.data}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
